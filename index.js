@@ -1,4 +1,11 @@
+var _ = require('lodash');
+var twitterText = require('twitter-text');
+
 var fancyLeftQuote = '\u201C';
+
+var mentionsRegex = new RegExp(
+  '[\s' + fancyLeftQuote + '"\'^](@\w[\w\d_]*)', 'g'
+);
 
 function isTweetOfUser(username, tweet) {
   return (!tweet.user || tweet.user.screen_name === username);
@@ -17,8 +24,24 @@ function isRetweetOfUser(username, tweet) {
   );
 }
 
+function whosInTheTweet(tweet) {
+  var usernames = [];
+
+  usernames.push(tweet.user.screen_name);
+
+  if ('retweeted_status' in tweet) {
+    usernames.push(tweet.retweeted_status.user.screen_name);
+  }
+
+  var mentionedUsernames = twitterText.extractMentions(tweet.text);
+  console.log('mentionedUsernames', mentionedUsernames);
+  usernames = usernames.concat(mentionedUsernames);
+
+  return _.uniq(usernames);
+}
 
 module.exports = {
   isTweetOfUser: isTweetOfUser,
-  isRetweetOfUser: isRetweetOfUser  
+  isRetweetOfUser: isRetweetOfUser,
+  whosInTheTweet: whosInTheTweet
 };

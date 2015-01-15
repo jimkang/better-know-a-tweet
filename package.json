@@ -1,6 +1,6 @@
 {
   "name": "better-know-a-tweet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provides functions that give you answers about a tweet object from the Twitter API.",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   "devDependencies": {
     "tape": "^3.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "twitter-text": "^1.10.0"
+  }
 }
