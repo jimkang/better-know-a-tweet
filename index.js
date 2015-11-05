@@ -34,7 +34,6 @@ function whosInTheTweet(tweet) {
   }
 
   var mentionedUsernames = twitterText.extractMentions(tweet.text);
-  console.log('mentionedUsernames', mentionedUsernames);
   usernames = usernames.concat(mentionedUsernames);
 
   return _.uniq(usernames);
