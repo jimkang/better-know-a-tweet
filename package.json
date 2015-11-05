@@ -1,6 +1,6 @@
 {
   "name": "better-know-a-tweet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provides functions that give you answers about a tweet object from the Twitter API.",
   "main": "index.js",
   "scripts": {
